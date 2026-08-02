@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-check-job
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  template:
+    metadata: {}
+    spec:
+      containers:
+      - command: [ "sh", "-c", "echo $HOST"]
+        image: busybox
+        name: db-check-job
+        resources: {}
+        env:
+          - name: HOST
+            valueFrom:
+            configMapKeyRef:
+              name: database-config     # The ConfigMap this value comes from.
+              key: host
+      restartPolicy: Never
+status: {}
