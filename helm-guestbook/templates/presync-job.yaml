@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: my-job
+spec:
+  template:
+    metadata: {}
+    spec:
+      containers:
+      - command: [ "sh", "-c", "echo \"Running database migrations...\"" , "sleep 10"]
+        image: busybox
+        name: my-job
+        resources: {}
+      restartPolicy: Never
+status: {}
