@@ -16,8 +16,8 @@ spec:
         env:
           - name: HOST
             valueFrom:
-            configMapKeyRef:
-              name: db-config     # The ConfigMap this value comes from.
-              key: host
+              configMapKeyRef:
+                name: db-config     # The ConfigMap this value comes from.
+                key: host
       restartPolicy: Never
 status: {}
